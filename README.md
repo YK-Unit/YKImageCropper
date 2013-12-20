@@ -9,7 +9,7 @@ for example:
     [self presentViewController:cropper animated:YES completion:NULL];
 }
 
-#pragma mark - YKImageCropperDelegate
+#pragma mark - YKImageCropperDelegate 
 - (void)imageCropper:(YKImageCropper *)cropper didFinishCroppingWithImage:(UIImage *)image
 {
     /*
@@ -25,6 +25,7 @@ for example:
 
 - (void)imageCropperDidCancel:(YKImageCropper *)cropper
 {
+    
     [cropper dismissViewControllerAnimated:YES completion:^{
     }];
 }
