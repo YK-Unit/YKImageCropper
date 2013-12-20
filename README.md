@@ -1,9 +1,10 @@
 YKImageCropper
 ==============
 It's easy to use YKImageCropper.
+
 for example:
 
-///first create a YKImageCropper
+//first create a YKImageCropper
 - (void)openEditor:(UIImage *)image
 {
 
@@ -13,9 +14,8 @@ for example:
     
 }
 
-
-
-///then handle the cropped image that you want in the YKImageCropperDelegate methods
+==============
+//then handle the cropped image that you want in the YKImageCropperDelegate methods
 
 //- YKImageCropperDelegate
 - (void)imageCropper:(YKImageCropper *)cropper didFinishCroppingWithImage:(UIImage *)image
