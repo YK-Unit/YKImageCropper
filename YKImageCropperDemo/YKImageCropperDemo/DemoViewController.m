@@ -67,7 +67,7 @@
 
 - (void)openEditor:(UIImage *)image
 {
-    YKImageCropper *cropper = [[YKImageCropper alloc]initWithImage:image cropSize:CGSizeMake(300, 300) delegate:self];
+    YKImageCropper *cropper = [[YKImageCropper alloc]initWithImage:image cropSize:CGSizeMake(120, 120) delegate:self];
     
     [self presentViewController:cropper animated:YES completion:NULL];
 }

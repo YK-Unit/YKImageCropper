@@ -1,22 +1,24 @@
 YKImageCropper
 ==============
-It's easy to use YKImageCropper.
+If you want to get a avater from a big image, YKImageCropper can help you to crop it.
 
-for example:
+![](YKImageCropper.gif)
 
-//first create a YKImageCropper
+---
+##Usage#
+See the code snippet below for an example of how to implement the YKImageCropper. There is also a simple demo app within the project.
+
+First create a YKImageCropper:
+```Obj-c
 - (void)openEditor:(UIImage *)image
 {
-
-    YKImageCropper *cropper = [[YKImageCropper alloc]initWithImage:image cropSize:CGSizeMake(300, 300) delegate:self];
-    
-    [self presentViewController:cropper animated:YES completion:NULL];
-    
+	YKImageCropper *cropper = [[YKImageCropper alloc]initWithImage:image cropSize:CGSizeMake(120, 120) delegate:self];
+	[self presentViewController:cropper animated:YES completion:NULL];
 }
+```
 
-==============
-//then handle the cropped image that you want in the YKImageCropperDelegate methods
-
+Then respond to the required delegate methods:
+```Obj-c
 //- YKImageCropperDelegate
 - (void)imageCropper:(YKImageCropper *)cropper didFinishCroppingWithImage:(UIImage *)image
 {
@@ -33,6 +35,7 @@ for example:
     }];
     
 }
+
 - (void)imageCropperDidCancel:(YKImageCropper *)cropper
 {
 
@@ -40,3 +43,4 @@ for example:
     }];
 
 }
+```
