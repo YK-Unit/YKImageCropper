@@ -1,6 +1,8 @@
 YKImageCropper
 ==============
-If you want to get a avater from a big image, YKImageCropper can help you to crop it.
+If you want to get a avater from a big image, YKImageCropper can help you to crop it. 
+
+**PS: it supports ARC and Non-ARC**
 
 ![](YKImageCropper.gif)
 
