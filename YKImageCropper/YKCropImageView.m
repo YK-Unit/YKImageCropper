@@ -69,24 +69,19 @@
         CGFloat imgWidth = image.size.width;
         CGFloat imgHeight = image.size.height;
         
-        CGFloat xScale = size.width / imgHeight;
+        CGFloat xScale = size.width / imgWidth;
         CGFloat yScale = size.height / imgHeight;
         CGFloat min = MAX(xScale, yScale);
-        CGFloat max = 1.0;
-        if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
-            max = 1.0 / [[UIScreen mainScreen] scale];
-        }
-        if (min > max) {
-            min = max;
-        }
         [_scrollView setMinimumZoomScale:1.0f];
-        [_scrollView setMaximumZoomScale:max+5.0f];
+        [_scrollView setMaximumZoomScale:5.0f];
         
-        imgWidth = imgWidth * min;
-        imgHeight = imgHeight * min;
-        [_imageView setFrame:CGRectMake(0, 0, imgWidth, imgHeight)];
+        imgWidth = image.size.width * min;
+        imgHeight = image.size.height * min;
         
-        [_scrollView setZoomScale:1.0f];
+        [_imageView setFrame:CGRectMake((_scrollView.frame.size.width - imgWidth)/2, (_scrollView.frame.size.height - imgHeight)/2, imgWidth, imgHeight)];
+
+        //[_imageView setFrame:CGRectMake(0, 0, imgWidth, imgHeight)];
+        //[_scrollView setZoomScale:2.0f];
     }
     return self;
 }
@@ -129,6 +124,14 @@
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     return _imageView;
+}
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView
+{
+    //NSLog(@"(%f , %f) - (%f , %f)",_imageView.frame.origin.x,_imageView.frame.origin.y,_imageView.frame.size.width,_imageView.frame.size.height);
+    
+    [_imageView setFrame:CGRectMake(0, 0, _imageView.frame.size.width, _imageView.frame.size.height)];
+
 }
 @end
 
