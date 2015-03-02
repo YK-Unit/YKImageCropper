@@ -104,16 +104,17 @@
 
 - (UIImage *)cropImage
 {
-    UIGraphicsBeginImageContext(self.frame.size);
+    CGFloat scale = 2.0;
+    UIGraphicsBeginImageContextWithOptions(self.frame.size, YES, scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     [self.layer renderInContext:context];
     UIImage *fullImage = UIGraphicsGetImageFromCurrentImageContext();
     
     CGFloat x = (self.frame.size.width - _cropSize.width)/2;
     CGFloat y = (self.frame.size.height - _cropSize.height)/2;
-    CGRect cropRect = CGRectMake(x, y, _cropSize.width,_cropSize.height);
+    CGRect cropRect = CGRectMake(x*scale, y*scale, _cropSize.width*scale,_cropSize.height*scale);
     UIImage *croppedImage = [UIImage imageWithCGImage:CGImageCreateWithImageInRect([fullImage CGImage], cropRect)];
-//    UIImageWriteToSavedPhotosAlbum(croppedImage, nil, nil, nil);
+    //UIImageWriteToSavedPhotosAlbum(croppedImage, nil, nil, nil);
     
     UIGraphicsEndImageContext();
     
